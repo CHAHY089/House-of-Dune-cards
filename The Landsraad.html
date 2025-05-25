@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Houses Of Dune</title>
+    <style>
+      body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+      }
+      .title {
+      font-size: 2.5em;
+      margin-top: 20px;
+      }
+      .team-stats {
+      margin: 20px 20px;
+      }
+      .options-label {
+      font-size: 1.2em;
+      }
+      select {
+      padding: 10px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      }
+      .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      }
+      .house-card {
+      background-color: #fff;
+      border-radius: 20px;
+      margin: 10px;
+      padding: 20px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+      main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+    </style>
+</head>
+<body>
+    <h1 class="title">The Landsraad</h1>
+    <main>
+      <div class="team-stats">
+        <p>Planet: <span id="planet"></span></p>
+        <p>Universe: <span id="universe"></span></p>
+        <p>Year: <span id="year"></span></p>
+        <p>Supreme Ruler: <span id="head-state"></span></p>
+      </div>
+      <label class="options-label" for="houses">Filter Info:</label>
+      <select name="houses" id="houses">
+        <option value="all">All Factions</option>
+        <option value="nickname">Position Nickname</option>
+        <option value="Padishah">Position Padishah</option>
+        <option value="Major">Position Major House</option>
+        <option value="Minor">Position Minor House</option>
+        <option value="dormant">Position Dormant House</option>
+      </select>
+      <div class="cards" id="house-cards">
+        <div class="house-card">
+          <h2>House Corino Sardaukar</h2>
+          <p>Position: Padishah</p>
+          <p>Number: 1</p>
+          <p>Nickname: Shaddam Corrino</p>
+        </div>
+        <div class="house-card">
+          <h2>House Atreides</h2>
+          <p>Position: Major House</p>
+          <p>Number: 2</p>
+          <p>Nickname: Paul Atreides</p>
+        </div>
+        <div class="house-card">
+          <h2>House Harkonnen</h2>
+          <p>Position: Major House</p>
+          <p>Number: 3</p>
+          <p>Nickname: Baron Vladmir</p>
+        </div>
+        <div class="house-card">
+          <h2>House Fenring</h2>
+          <p>Position: Major House</p>
+          <p>Number: 4</p>
+          <p>Nickname: Hasimir Fenring</p>
+        </div>
+        <div class="house-card">
+          <h2>House Ginaz</h2>
+          <p>Position: Major House</p>
+          <p>Number: 5</p>
+          <p>Nickname: Alberto Ginaz</p>
+        </div>
+        <div class="house-card">
+          <h2>House Halleck</h2>
+          <p>Position: Minor House</p>
+          <p>Number: 6</p>
+          <p>Nickname: Gurney Halleck</p>
+        </div>
+        <div class="house-card">
+          <h2>House Metulli</h2>
+          <p>Position: Major House</p>
+          <p>Number: 7</p>
+          <p>Nickname: Flambert Metulli</p>
+        </div>
+        <div class="house-card">
+          <h2>House Moritani</h2>
+          <p>Position: Major House</p>
+          <p>Number: 8</p>
+          <p>Nickname: Tyco Di Moritani</p>
+        </div>
+        <div class="house-card">
+          <h2>House Ordos</h2>
+          <p>Position: Major House</p>
+          <p>Number: 9</p>
+          <p>Nickname: Executrix</p>
+        </div>
+        <div class="house-card">
+          <h2>House Vernius</h2>
+          <p>Position: Major House</p>
+          <p>Number: 10</p>
+          <p>Nickname: Dominic Vernius</p>
+        </div>
+        <div class="house-card">
+          <h2>House Richese</h2>
+          <p>Position: Major House</p>
+          <p>Number: 11</p>
+          <p>Nickname: Ferdinand Richese</p>
+        </div>
+        <div class="house-card">
+          <h2>House Nebiro</h2>
+          <p>Position: Minor House</p>
+          <p>Number: 12</p>
+          <p>Nickname: Essas Paymon</p>
+        </div>
+      </div>
+    </main>
+<script>
+  const planetName = document.getElementById("planet");
+  const typeOfUniverse = document.getElementById("universe");
+  const duneYear = document.getElementById("year");
+  const headState = document.getElementById("head-state");
+  const houseCards = document.getElementById("house-cards");
+  const housesDropdownList = document.getElementById("houses");
+  const myFavoriteHouse = {
+    planet: "Arrakis",
+    universe: "Dune",
+    year: 26400,
+    isMajorHouse: true,
+    headState: {
+      stateHead: "Padishah Emperor Shaddam Corrino IV",
+      matches: 7,
+    },
+    houses: [
+      {
+        name: "House Corino Sardaukar",
+        position: "Padishah",
+        number: 1,
+        isRuler: true,
+        nickname: "Shaddam Corrino",
+      },
+      {
+        name: "House Atreides",
+        position: "Major",
+        number: 2,
+        isRuler: true,
+        nickname: "Paul Atreides",
+      },
+      {
+        name: "House Harkonnen",
+        position: "Major",
+        number: 3,
+        isRuler: true,
+        nickname: "Baron Vladmir Harkonnen",
+      },
+      {
+        name: "House Fenring",
+        position: "Major",
+        number: 4,
+        isRuler: true,
+        nickname: "Hasimir Fenring",
+      },
+      {
+        name: "House Ginaz",
+        position: "Major",
+        number: 5,
+        isRuler: true,
+        nickname: "Alberto Ginaz",
+      },
+      {
+        name: "House Halleck",
+        position: "Minor",
+        number: 6,
+        isRuler: false,
+        nickname: "Gurney Halleck",
+      },
+      {
+        name: "House Metulli",
+        position: "Major",
+        number: 7,
+        isRuler: true,
+        nickname: "Flambert Mutelli",
+      },
+      {
+        name: "House Moritani",
+        position: "Major",
+        number: 8,
+        isRuler: true,
+        nickname: "Tycho Di Moritani",
+      },
+      {
+        name: "House Ordos",
+        position: "Major",
+        number: 9,
+        isRuler: true,
+        nickname: "Executrix",
+      },
+      {
+        name: "House Vernius",
+        position: "Major",
+        number: 10,
+        isRuler: true,
+        nickname: "Dominic Vernius",
+      },
+      {
+        name: "House Richese",
+        position: "Major",
+        number: 11,
+        isRuler: true,
+        nickname: "Ferdinand Richese",
+      },
+      {
+        name: "House Nebiro",
+        position: "Minor",
+        number: 12,
+        isRuler: true,
+        nickname: "Essas Paymon",
+      },  
+    ],
+  };
+
+  const { universe, planet, year, houses } = myFavoriteHouse;
+  const { stateHead } = myFavoriteHouse.headState;
+
+  typeOfUniverse.textContent = universe;
+  planetName.textContent = planet;
+  duneYear.textContent = year;
+  headState.textContent = stateHead;
+
+  const setHouseCards = (arr = houses) => {
+    houseCards.innerHTML += arr
+      .map(
+        ({ name, position, number, isRuler, nickname }) => {
+          return `
+          <div class="house-card">
+            <h2>${isRuler ? "(Ruler)" : ""} ${name}</h2>
+            <p>Position: ${position}</p>
+            <p>Number: ${number}</p>
+            <p>Nickname: ${nickname !== null ? nickname : "N/A"}</p>
+          </div>
+        `;
+        }
+      )
+      .join("");
+  };
+
+  housesDropdownList.addEventListener("change", (e) => {
+    houseCards.innerHTML = "";
+
+    switch (e.target.value) {
+      case "nickname":
+        setHouseCards(houses.filter((house) => house.nickname !== null));
+        break;
+      case "Padishah":
+        setHouseCards(houses.filter((house) => house.position === "Padishah"));
+        break;
+      case "Major":
+        setHouseCards(houses.filter((house) => house.position === "Major"));
+        break;
+      case "Minor":
+        setHouseCards(houses.filter((house) => house.position === "Minor"));
+        break;
+      case "dormant":
+        setHouseCards(houses.filter((house) => house.position === "dormant"));
+        break;
+    }
+  });
+</script>
+</body>
+<footer>2025© Chan Hao Wei. All Rights Reserved</footer>
+</html>
